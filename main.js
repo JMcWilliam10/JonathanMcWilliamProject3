@@ -2,57 +2,43 @@
 // increment the array
 
 let stockValue = [403, 402, 399, 400, 407, 399, 404, 405, 309, 350];
-let tones = ["a", "b", "c", "d", "e", "g", "a", "b", "c", "d", "e", "g"];
 let incrementor = 6;
-var synth = new Tone.Synth().toMaster();
-
-// for (i = 0; i < stockValue.length; i++) {
-//   console.log(stockValue[i]);
-//   for (x = 1; x < stockValue.length; x++) {
-//     console.log(stockValue[x], stockValue[i]);
-//     if (stockValue[i] > stockValue[x]) {
-//       incrementor++;
-//       synth.triggerAttackRelease("C4", "16n");
-//       // console.log("up");
-//     } else {
-//       incrementor--;
-//       synth.triggerAttackRelease("B4", "16n");
-//       // console.log("down");
-//     }
-//     console.log(i);
-//   }
-// }
-
 const newArray = [];
-let secondArray = [];
+const secondArray = [];
+const auditoryChart = [];
 
 for (i = 0; i < stockValue.length; i++) {
   newArray.push(stockValue[i]);
-  console.log(newArray);
 }
 
 for (x = 1; x < stockValue.length; x++) {
   secondArray.push(stockValue[x]);
-  console.log(secondArray);
+}
+
+function playAudio(key) {
+  // console.log(key);
+  document.querySelector(`#${key}`).play();
 }
 
 for (i = 0; i < stockValue.length; i++) {
-  // console.log(newArray[i], secondArray[i]);
   if (newArray[i] > secondArray[i]) {
     incrementor++;
-    console.log(incrementor);
+    // console.log(`a${incrementor++}`);
+    auditoryChart.push(`a${incrementor}`);
   } else {
     incrementor--;
-    console.log(incrementor);
+    // console.log(`a${incrementor--}`);
+    auditoryChart.push(`a${incrementor}`);
   }
+  // console.log(auditoryChart);
 }
 
-//create a synth and connect it to the master output (your speakers)
-// var synth = new Tone.Synth().toMaster();
-
-//play a middle 'C' for the duration of an 8th note
-// synth.triggerAttackRelease("C4", "16n");
-
-// import audio files
-// const a = new Audio("./A1.wav");
-// a();
+// Establish for loop + set time out to play array
+let offset = 0;
+auditoryChart.forEach(function(tone) {
+  setTimeout(function() {
+    console.log(tone);
+    playAudio(tone);
+  }, offset);
+  offset += 500;
+});
