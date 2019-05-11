@@ -5,8 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      body {
+        background: lightblue;
+      }
+      .button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 30vh;
+      }
+      button {
+        border: 10px solid grey;
+        padding: 20px 10px;
+        font-size: 2rem;
+      }
+      button:focus,
+      button:hover {
+        border: 10px solid salmon;
+        background: lightblue;
+      }
+      button:active {
+        border: 10px solid blue;
+      }
+    </style>
   </head>
   <body>
+    <canvas id="myChart"></canvas>
     <audio id="a1" src="audio/a1.wav"></audio>
     <audio id="a2" src="audio/a2.wav"></audio>
     <audio id="a3" src="audio/a3.wav"></audio>
@@ -21,6 +46,21 @@
     <audio id="a12" src="audio/a12.wav"></audio>
     <audio id="a13" src="audio/a13.wav"></audio>
     <audio id="a14" src="audio/a14.wav"></audio>
+    <div class="button">
+      <button onclick="">
+        Light
+        <div>10 Data Points</div>
+      </button>
+      <button onclick="">
+        Moderate
+        <div>30 Data Points</div>
+      </button>
+      <button onclick="">
+        Detailed
+        <div>75 Data Points</div>
+      </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="./main.js"></script>
   </body>
 </html>
